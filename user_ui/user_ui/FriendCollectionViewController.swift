@@ -12,11 +12,7 @@ private let reuseIdentifier = "FriendCollectionViewCell"
 
 class FriendCollectionViewController: UICollectionViewController {
 
-    var friendName = ""
-    
-    public func setFriendName(name: String) {
-        self.friendName = name
-    }
+    var friend: User = User()    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +30,13 @@ class FriendCollectionViewController: UICollectionViewController {
         return 1
     }
 
+    @IBAction func likeClick(_ sender: Any) {
+        (sender as! LikeButton).like()
+    }
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FriendCollectionViewCell
-        cell.name.text = self.friendName
-        
+        cell.name.text = friend.name
+        cell.photo.image = UIImage(named: friend.photoPath)
         // Configure the cell
     
         return cell

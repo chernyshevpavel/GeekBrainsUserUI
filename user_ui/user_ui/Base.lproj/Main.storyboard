@@ -50,6 +50,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="LHe-fS-Tfj" firstAttribute="centerX" secondItem="4c3-gj-NaE" secondAttribute="centerX" id="1SN-zo-gVY"/>
                                     <constraint firstItem="BkP-KO-JS1" firstAttribute="top" secondItem="4c3-gj-NaE" secondAttribute="top" constant="100" id="4kB-7E-aF8"/>
@@ -82,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="723" y="115"/>
+            <point key="canvasLocation" x="721.73913043478262" y="114.50892857142857"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yib-Ss-CTW">
@@ -138,6 +139,7 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XVb-Vv-co9">
                                             <rect key="frame" x="34" y="4.5" width="69" height="66"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="XVb-Vv-co9" secondAttribute="height" multiplier="1:1" id="Isx-tA-ceH"/>
                                                 <constraint firstAttribute="height" constant="50" id="SUT-60-VTj"/>
@@ -234,13 +236,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-App-40x40" translatesAutoresizingMaskIntoConstraints="NO" id="xjo-dA-U7c">
-                                            <rect key="frame" x="34" y="3" width="69" height="69"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="xjo-dA-U7c" secondAttribute="height" multiplier="1:1" id="9BH-LZ-pcs"/>
-                                                <constraint firstAttribute="height" constant="50" id="N7g-PB-h39"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rv-6q-o2W">
                                             <rect key="frame" x="123" y="27" width="100" height="21"/>
                                             <constraints>
@@ -250,20 +245,36 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-DV-gaA" customClass="AvatarView" customModule="user_ui" customModuleProvider="target">
+                                            <rect key="frame" x="38" y="12.5" width="50" height="50"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Tvc-DV-gaA" secondAttribute="height" multiplier="1:1" id="V1C-3t-pMw"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="2Rv-6q-o2W" secondAttribute="trailing" constant="191" id="F68-tO-gSn"/>
-                                        <constraint firstItem="2Rv-6q-o2W" firstAttribute="leading" secondItem="xjo-dA-U7c" secondAttribute="trailing" constant="20" id="OaY-vI-j1c"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tvc-DV-gaA" secondAttribute="trailing" constant="326" id="dSI-H4-EuC"/>
                                         <constraint firstItem="2Rv-6q-o2W" firstAttribute="centerY" secondItem="MMK-IK-Pwo" secondAttribute="centerY" id="gO3-ha-2Fd"/>
-                                        <constraint firstItem="xjo-dA-U7c" firstAttribute="centerY" secondItem="MMK-IK-Pwo" secondAttribute="centerY" id="kIt-u3-bN7"/>
-                                        <constraint firstItem="xjo-dA-U7c" firstAttribute="leading" secondItem="MMK-IK-Pwo" secondAttribute="leading" constant="34" id="lv0-Yg-1Gd"/>
+                                        <constraint firstItem="Tvc-DV-gaA" firstAttribute="centerY" secondItem="MMK-IK-Pwo" secondAttribute="centerY" id="mWZ-9K-Bj8"/>
+                                        <constraint firstItem="Tvc-DV-gaA" firstAttribute="leading" secondItem="MMK-IK-Pwo" secondAttribute="leading" constant="38" id="sVF-w3-QcL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="15" leading="14" bottom="8" trailing="8"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="name" destination="2Rv-6q-o2W" id="OZf-jQ-gJL"/>
-                                    <outlet property="photo" destination="xjo-dA-U7c" id="qa7-nb-u6i"/>
+                                    <outlet property="photo" destination="Tvc-DV-gaA" id="PO6-hd-aXd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -303,25 +314,36 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="83" verticalHuggingPriority="83" image="Icon-App-83.5x83.5" translatesAutoresizingMaskIntoConstraints="NO" id="wti-w0-j2w">
-                                            <rect key="frame" x="143" y="72" width="128" height="128"/>
+                                            <rect key="frame" x="157" y="100" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="wti-w0-j2w" secondAttribute="height" multiplier="1:1" id="Kle-rr-k0Q"/>
+                                                <constraint firstAttribute="width" constant="100" id="RPD-xf-VKI"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klx-OP-LhX">
-                                            <rect key="frame" x="186" y="24" width="42" height="21"/>
+                                            <rect key="frame" x="186" y="24" width="42" height="49"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-kI-eyl" customClass="LikeButton" customModule="user_ui" customModuleProvider="target">
+                                            <rect key="frame" x="184" y="197" width="46" height="30"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="likeClick:" destination="dHk-Yj-D5b" eventType="touchUpInside" id="noc-DC-YN1"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="wti-w0-j2w" firstAttribute="centerX" secondItem="t0D-QP-iiX" secondAttribute="centerX" id="5WP-nF-6g0"/>
+                                        <constraint firstItem="vtV-kI-eyl" firstAttribute="top" secondItem="wti-w0-j2w" secondAttribute="bottom" constant="-3" id="AMm-2V-3YO"/>
+                                        <constraint firstItem="vtV-kI-eyl" firstAttribute="centerX" secondItem="t0D-QP-iiX" secondAttribute="centerX" id="GQL-ba-fmK"/>
                                         <constraint firstItem="Klx-OP-LhX" firstAttribute="centerX" secondItem="t0D-QP-iiX" secondAttribute="centerX" id="TnW-uR-Lca"/>
                                         <constraint firstItem="Klx-OP-LhX" firstAttribute="leading" secondItem="t0D-QP-iiX" secondAttribute="leading" constant="186" id="U0V-P8-Ag9"/>
                                         <constraint firstAttribute="trailing" secondItem="Klx-OP-LhX" secondAttribute="trailing" constant="186" id="Xel-x7-E7d"/>
                                         <constraint firstAttribute="bottom" secondItem="wti-w0-j2w" secondAttribute="bottom" constant="35" id="dJ6-c9-y3T"/>
                                         <constraint firstItem="Klx-OP-LhX" firstAttribute="top" secondItem="t0D-QP-iiX" secondAttribute="top" constant="24" id="dd1-al-7wp"/>
+                                        <constraint firstAttribute="bottom" secondItem="vtV-kI-eyl" secondAttribute="bottom" constant="8" id="qzJ-ju-niA"/>
                                         <constraint firstItem="wti-w0-j2w" firstAttribute="top" secondItem="Klx-OP-LhX" secondAttribute="bottom" constant="27" id="zMG-i9-RP9"/>
                                     </constraints>
                                 </collectionViewCellContentView>
@@ -410,7 +432,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-App-40x40" width="40" height="40"/>
         <image name="Icon-App-83.5x83.5" width="83.5" height="83.5"/>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="64" height="52"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>

@@ -17,6 +17,11 @@ class User {
         self.name = name
     }
     
+    init(name: String, img: String) {
+        self.name = name
+        self.photoPath = img
+    }
+    
     init() {
         
     }

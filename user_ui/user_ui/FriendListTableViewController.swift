@@ -31,29 +31,28 @@ class FriendListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let friendCell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell") as! FriendTableViewCell
-        let friendName: String =  self.userList[indexPath.row].name
-        friendCell.name.text = friendName
-        //friendCell.photo.
+        let friend: User = self.userList[indexPath.row]
+        friendCell.name.text = friend.name
+        friendCell.photo.image.image = UIImage(named: friend.photoPath)
         return friendCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let friendCollectionViewCtrl = storyBoard.instantiateViewController(identifier: "FriendCollectionViewController") as! FriendCollectionViewController
-        friendCollectionViewCtrl.setFriendName(name: String(userList[indexPath.row].name))
+        friendCollectionViewCtrl.friend = userList[indexPath.row]
         self.navigationController?.pushViewController(friendCollectionViewCtrl, animated: true)
     }
     
     func getFriendList() -> [User] {
         var userList:[User] = []
-        userList.append(User(name: "Pavel"))
-        userList.append(User(name: "Lola"))
-        userList.append(User(name: "Stas"))
-        userList.append(User(name: "Vasiliy"))
-        userList.append(User(name: "Andrey"))
-        userList.append(User(name: "Kitil"))
-        userList.append(User(name: "Sergey"))
-        userList.append(User(name: "Ivan"))
+        userList.append(User(name: "Pavel", img: "1"))
+        userList.append(User(name: "Lola", img: "2"))
+        userList.append(User(name: "Stas", img: "3"))
+        userList.append(User(name: "Vasiliy", img: "4"))
+        userList.append(User(name: "Andrey", img: "5"))
+        userList.append(User(name: "Kitil", img: "6"))
+        userList.append(User(name: "Sergey", img: "7"))
         return userList
     }
 
