@@ -11,9 +11,9 @@ import UIKit
 class LikeButton: UIButton {
     
     @IBInspectable var liked: Bool = false  {
-           didSet {
-               setUpDefault()
-           }
+       didSet {
+           setUpDefault()
+       }
     }
     
     @IBInspectable var likeCount: Int = 0 {

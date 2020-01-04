@@ -12,7 +12,7 @@ class AvatarView: UIView {
     
     var image: UIImageView!
     
-    @IBInspectable var shadowCollor: CGColor = UIColor.black.cgColor {
+    @IBInspectable var shadowCollor: UIColor = UIColor.black {
         didSet {
             setNeedsDisplay()
         }
@@ -47,7 +47,7 @@ class AvatarView: UIView {
     
     override func layoutSubviews() {
         image.frame = bounds
-        layer.shadowColor = shadowCollor
+        layer.shadowColor = shadowCollor.cgColor
         layer.shadowOpacity = Float(shadowOpacity)
         layer.shadowRadius = shadowRadius
         layer.shadowOffset = CGSize(width: 0, height: 1)
