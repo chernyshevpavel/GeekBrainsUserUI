@@ -175,7 +175,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Group list" id="kSS-rY-ijD">
-                        <barButtonItem key="rightBarButtonItem" image="arrowshape.turn.up.right.fill" catalog="system" style="plain" id="50k-c7-WEJ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="magnifyingglass" catalog="system" style="plain" id="50k-c7-WEJ">
                             <connections>
                                 <segue destination="53b-GN-Xxz" kind="show" id="3yg-xT-zOL"/>
                             </connections>
@@ -204,7 +204,6 @@
         <!--Friend list-->
         <scene sceneID="nCj-S7-Xiq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VOk-IU-ZUu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="MOm-AH-8qA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friend list" id="ik2-1G-tD6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rpQ-AL-Ay7">
@@ -215,13 +214,13 @@
                         <segue destination="Xt7-cS-jj6" kind="relationship" relationship="rootViewController" id="IHt-eV-1Uf"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VOk-IU-ZUu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2658" y="-234"/>
         </scene>
         <!--Friend list-->
         <scene sceneID="ARV-ba-OOk">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jaz-gu-nHz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="FriendList" title="Friend list" id="Xt7-cS-jj6" customClass="FriendListTableViewController" customModule="user_ui" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0xk-cv-iky">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -277,6 +276,7 @@
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jaz-gu-nHz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3556.521739130435" y="-234.375"/>
         </scene>
@@ -392,6 +392,7 @@
                                 <connections>
                                     <outlet property="groupPhoto" destination="MHu-wl-Knv" id="l9u-95-x8X"/>
                                     <outlet property="name" destination="e5S-yc-esb" id="J7b-sg-g2p"/>
+                                    <segue destination="xoW-8s-igl" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="soy-fF-EWd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -403,6 +404,7 @@
                     <navigationItem key="navigationItem" id="X0u-ke-5tu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ReE-4c-YOT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="xoW-8s-igl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4419" y="463"/>
         </scene>
@@ -411,6 +413,7 @@
         <image name="Icon-App-40x40" width="40" height="40"/>
         <image name="Icon-App-83.5x83.5" width="83.5" height="83.5"/>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="64" height="52"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="person.2.fill" catalog="system" width="64" height="40"/>
     </resources>
 </document>

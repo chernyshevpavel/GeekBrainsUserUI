@@ -42,8 +42,19 @@ class GroupListTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func addGroupBtnClick(_ sender: Any) {
-        
+    @IBAction func addGroup(segue: UIStoryboardSegue) {
+        if segue.identifier == "addGroup" {
+            guard let serchGroupTableVC = segue.source as? SearchGroupListTableViewController
+                else {return}
+            if let indexPath = serchGroupTableVC.tableView.indexPathForSelectedRow {
+                let group = serchGroupTableVC.groupList[indexPath.row]
+                if !groupList.contains(group) {
+                    self.groupList.append(group)
+                  //  serchGroupTableVC.groupList.remove(at: indexPath.row)
+                    tableView.reloadData()
+                }
+            }
+        }
     }
     
     func getGroupList() -> [Group] {

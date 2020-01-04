@@ -11,7 +11,10 @@ import UIKit
 class SearchGroupListTableViewController: UITableViewController {
 
     var groupList:[Group] = []
-    var lastTouchIndex:Int = 0
+    
+    override func loadView() {
+        super.loadView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +32,12 @@ class SearchGroupListTableViewController: UITableViewController {
         let groupSell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewCell") as! GroupTableViewCell
         let groupName: String =  self.groupList[indexPath.row].name
         groupSell.name.text = groupName
-        //friendCell.photo.
         return groupSell
     }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        lastTouchIndex = indexPath.row
+        //tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
     func getGroupList() -> [Group] {
