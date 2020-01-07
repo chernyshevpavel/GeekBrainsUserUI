@@ -23,6 +23,14 @@ class LikeButton: UIButton {
     }
     
     func like()  {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
+                self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }, completion: { _ in
+            })
+        })
         liked = !liked
         if liked {
             setLinked()

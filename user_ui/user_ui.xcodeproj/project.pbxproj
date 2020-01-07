@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D44660923C53164003C0953 /* IndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44660823C53164003C0953 /* IndicatorViewController.swift */; };
+		1D44660B23C531E1003C0953 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44660A23C531E1003C0953 /* IndicatorView.swift */; };
 		1D48535923C345630032791E /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48535823C345630032791E /* NewsTableViewController.swift */; };
 		1D48535D23C350BC0032791E /* IdentifierButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48535C23C350BC0032791E /* IdentifierButton.swift */; };
 		1D48536323C37B6C0032791E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48536223C37B6C0032791E /* News.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D44660823C53164003C0953 /* IndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorViewController.swift; sourceTree = "<group>"; };
+		1D44660A23C531E1003C0953 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		1D48535823C345630032791E /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		1D48535C23C350BC0032791E /* IdentifierButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierButton.swift; sourceTree = "<group>"; };
 		1D48536223C37B6C0032791E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				1D60ADB523BFCF26002E66E0 /* GroupListTableViewController.swift */,
 				1D60ADAC23BFBEC3002E66E0 /* FriendCollectionViewController.swift */,
 				1D48535823C345630032791E /* NewsTableViewController.swift */,
+				1D44660823C53164003C0953 /* IndicatorViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				1DB8378A23C1061F006EE9A2 /* AvatarView.swift */,
 				1DB8378C23C130FC006EE9A2 /* LikeButton.swift */,
 				1D48535C23C350BC0032791E /* IdentifierButton.swift */,
+				1D44660A23C531E1003C0953 /* IndicatorView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				1D60ADB423BFC9AE002E66E0 /* Group.swift in Sources */,
 				1DC84AC323B2B6EF00E7CEAE /* ViewController.swift in Sources */,
 				1D60ADA723BF9C55002E66E0 /* FriendListTableViewController.swift in Sources */,
+				1D44660923C53164003C0953 /* IndicatorViewController.swift in Sources */,
 				1D60ADBA23BFCF8B002E66E0 /* GroupTableViewCell.swift in Sources */,
 				1DB8378B23C1061F006EE9A2 /* AvatarView.swift in Sources */,
 				1D48536323C37B6C0032791E /* News.swift in Sources */,
@@ -353,6 +360,7 @@
 				1D666D5423C3CB2F0016E1FA /* NewsTableViewCell3.swift in Sources */,
 				1D60ADAF23BFBFA3002E66E0 /* FriendCollectionViewCell.swift in Sources */,
 				1DC84ABF23B2B6EF00E7CEAE /* AppDelegate.swift in Sources */,
+				1D44660B23C531E1003C0953 /* IndicatorView.swift in Sources */,
 				1D60ADB223BFC8EA002E66E0 /* User.swift in Sources */,
 				1D60ADAD23BFBEC3002E66E0 /* FriendCollectionViewController.swift in Sources */,
 				1D48535D23C350BC0032791E /* IdentifierButton.swift in Sources */,
