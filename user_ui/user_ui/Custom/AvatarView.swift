@@ -47,6 +47,7 @@ class AvatarView: UIView {
     
     override func layoutSubviews() {
         image.frame = bounds
+        layer.backgroundColor = .none
         layer.shadowColor = shadowCollor.cgColor
         layer.shadowOpacity = Float(shadowOpacity)
         layer.shadowRadius = shadowRadius
