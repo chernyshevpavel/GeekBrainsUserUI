@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LOe-GY-qlm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kzA-QK-vT4">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,52 +99,25 @@
             </objects>
             <point key="canvasLocation" x="721.73913043478262" y="114.50892857142857"/>
         </scene>
-        <!--Indicator View Controller-->
+        <!--View Controller-->
         <scene sceneID="ZMd-IQ-gwP">
             <objects>
-                <viewController id="LOe-GY-qlm" customClass="IndicatorViewController" customModule="user_ui" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LOe-GY-qlm" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e2d-3u-4Pj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-rS-Q4N" customClass="IndicatorView" customModule="user_ui" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-rS-Q4N" customClass="Indicator" customModule="user_ui" customModuleProvider="target">
                                 <rect key="frame" x="107" y="87" width="200" height="101"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-Fw-cNe">
-                                        <rect key="frame" x="0.0" y="41" width="200" height="22"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQv-T7-KeT">
-                                                <rect key="frame" x="0.0" y="0.0" width="61.333333333333336" height="22"/>
-                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="circle.fill" catalog="system">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPk-oa-Ut8">
-                                                <rect key="frame" x="69.333333333333343" y="0.0" width="61.333333333333343" height="22"/>
-                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="circle.fill" catalog="system">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-pE-llZ">
-                                                <rect key="frame" x="138.66666666666666" y="0.0" width="61.333333333333343" height="22"/>
-                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="circle.fill" catalog="system">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="XBg-Fw-cNe" firstAttribute="leading" secondItem="jXa-rS-Q4N" secondAttribute="leading" id="42g-ch-iHG"/>
                                     <constraint firstAttribute="width" constant="200" id="Dpw-nW-Cta"/>
-                                    <constraint firstItem="XBg-Fw-cNe" firstAttribute="centerX" secondItem="jXa-rS-Q4N" secondAttribute="centerX" id="bdO-E5-Edu"/>
-                                    <constraint firstAttribute="trailing" secondItem="XBg-Fw-cNe" secondAttribute="trailing" id="pY9-aF-vtA"/>
-                                    <constraint firstItem="XBg-Fw-cNe" firstAttribute="centerY" secondItem="jXa-rS-Q4N" secondAttribute="centerY" id="vjT-nh-tXh"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                        <color key="value" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -155,11 +127,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dlb-nh-qee"/>
                     </view>
-                    <connections>
-                        <outlet property="first" destination="AQv-T7-KeT" id="C1z-5r-iTY"/>
-                        <outlet property="second" destination="WPk-oa-Ut8" id="woE-RW-EzS"/>
-                        <outlet property="third" destination="FSL-pE-llZ" id="aKW-UX-fDI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6S-f2-JbM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -602,7 +569,6 @@
     </scenes>
     <resources>
         <image name="Icon-App-83.5x83.5" width="83.5" height="83.5"/>
-        <image name="circle.fill" catalog="system" width="64" height="60"/>
         <image name="n.square" catalog="system" width="64" height="56"/>
         <image name="person" catalog="system" width="64" height="58"/>
         <image name="person.2" catalog="system" width="64" height="40"/>
