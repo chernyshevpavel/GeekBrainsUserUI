@@ -37,8 +37,11 @@ class GroupListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let removingGroup = groupList[indexPath.row]
             groupList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            GroupsDB.shared.userGroups.remove(at: indexPath.row)
+            GroupsDB.shared.searchGroups.append(removingGroup)
         }
     }
     
@@ -48,6 +51,7 @@ class GroupListTableViewController: UITableViewController {
                 else {return}
             if let indexPath = serchGroupTableVC.tableView.indexPathForSelectedRow {
                 let group = serchGroupTableVC.groupList[indexPath.row]
+                GroupsDB.shared.searchGroups.remove(at: indexPath.row)
                 if !groupList.contains(group) {
                     self.groupList.append(group)
                   //  serchGroupTableVC.groupList.remove(at: indexPath.row)
@@ -58,13 +62,7 @@ class GroupListTableViewController: UITableViewController {
     }
     
     func getGroupList() -> [Group] {
-        var groupList:[Group] = []
-        groupList.append(Group(name: "Building"))
-        groupList.append(Group(name: "Travels"))
-        groupList.append(Group(name: "Family"))
-        groupList.append(Group(name: "Cups"))
-        groupList.append(Group(name: "Laptops"))
-        return groupList
+        return GroupsDB.shared.userGroups
     }
 
 }

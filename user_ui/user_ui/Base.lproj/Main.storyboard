@@ -315,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="3557" y="1157"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Rotate Navigation Controller-->
         <scene sceneID="nCj-S7-Xiq">
             <objects>
-                <navigationController id="MOm-AH-8qA" sceneMemberID="viewController">
+                <navigationController id="MOm-AH-8qA" customClass="RotateNavigationController" customModule="user_ui" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="ik2-1G-tD6">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
                     </tabBarItem>

@@ -10,6 +10,11 @@
 		1D44660B23C531E1003C0953 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44660A23C531E1003C0953 /* IndicatorView.swift */; };
 		1D44660D23C5CE1F003C0953 /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D44660C23C5CE1F003C0953 /* IndicatorView.xib */; };
 		1D44660F23C5CF5C003C0953 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44660E23C5CF5C003C0953 /* Indicator.swift */; };
+		1D44661123C6566A003C0953 /* RotateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44661023C6566A003C0953 /* RotateNavigationController.swift */; };
+		1D44661423C6579B003C0953 /* RotatePushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44661323C6579B003C0953 /* RotatePushAnimator.swift */; };
+		1D44661623C65CE6003C0953 /* RotatePopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44661523C65CE6003C0953 /* RotatePopAnimator.swift */; };
+		1D44661923CB7E42003C0953 /* session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44661823CB7E42003C0953 /* session.swift */; };
+		1D44661B23CB8103003C0953 /* GroupsDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D44661A23CB8103003C0953 /* GroupsDB.swift */; };
 		1D48535923C345630032791E /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48535823C345630032791E /* NewsTableViewController.swift */; };
 		1D48535D23C350BC0032791E /* IdentifierButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48535C23C350BC0032791E /* IdentifierButton.swift */; };
 		1D48536323C37B6C0032791E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D48536223C37B6C0032791E /* News.swift */; };
@@ -57,6 +62,11 @@
 		1D44660A23C531E1003C0953 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		1D44660C23C5CE1F003C0953 /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
 		1D44660E23C5CF5C003C0953 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		1D44661023C6566A003C0953 /* RotateNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateNavigationController.swift; sourceTree = "<group>"; };
+		1D44661323C6579B003C0953 /* RotatePushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatePushAnimator.swift; sourceTree = "<group>"; };
+		1D44661523C65CE6003C0953 /* RotatePopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotatePopAnimator.swift; sourceTree = "<group>"; };
+		1D44661823CB7E42003C0953 /* session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = session.swift; sourceTree = "<group>"; };
+		1D44661A23CB8103003C0953 /* GroupsDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsDB.swift; sourceTree = "<group>"; };
 		1D48535823C345630032791E /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		1D48535C23C350BC0032791E /* IdentifierButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierButton.swift; sourceTree = "<group>"; };
 		1D48536223C37B6C0032791E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -114,6 +124,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D44661223C6570C003C0953 /* Animators */ = {
+			isa = PBXGroup;
+			children = (
+				1D44661523C65CE6003C0953 /* RotatePopAnimator.swift */,
+				1D44661323C6579B003C0953 /* RotatePushAnimator.swift */,
+			);
+			path = Animators;
+			sourceTree = "<group>";
+		};
+		1D44661723CB7E2A003C0953 /* logic */ = {
+			isa = PBXGroup;
+			children = (
+				1D44661823CB7E42003C0953 /* session.swift */,
+				1D44661A23CB8103003C0953 /* GroupsDB.swift */,
+			);
+			path = logic;
+			sourceTree = "<group>";
+		};
 		1D48535523C344480032791E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +152,7 @@
 				1D60ADAC23BFBEC3002E66E0 /* FriendCollectionViewController.swift */,
 				1D48535823C345630032791E /* NewsTableViewController.swift */,
 				1D44660C23C5CE1F003C0953 /* IndicatorView.xib */,
+				1D44661023C6566A003C0953 /* RotateNavigationController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -186,6 +215,8 @@
 		1DC84ABD23B2B6EF00E7CEAE /* user_ui */ = {
 			isa = PBXGroup;
 			children = (
+				1D44661723CB7E2A003C0953 /* logic */,
+				1D44661223C6570C003C0953 /* Animators */,
 				1D48535723C344DD0032791E /* Custom */,
 				1D48535623C344590032791E /* Cells */,
 				1D48535523C344480032791E /* Screens */,
@@ -354,14 +385,19 @@
 				1D44660F23C5CF5C003C0953 /* Indicator.swift in Sources */,
 				1DC84AC323B2B6EF00E7CEAE /* ViewController.swift in Sources */,
 				1D60ADA723BF9C55002E66E0 /* FriendListTableViewController.swift in Sources */,
+				1D44661923CB7E42003C0953 /* session.swift in Sources */,
+				1D44661B23CB8103003C0953 /* GroupsDB.swift in Sources */,
 				1D60ADBA23BFCF8B002E66E0 /* GroupTableViewCell.swift in Sources */,
 				1DB8378B23C1061F006EE9A2 /* AvatarView.swift in Sources */,
 				1D48536323C37B6C0032791E /* News.swift in Sources */,
 				1D60ADAB23BFA100002E66E0 /* FriendTableViewCell.swift in Sources */,
 				1D60ADB823BFCF58002E66E0 /* SearchGroupListTableViewController.swift in Sources */,
 				1DB8378D23C130FC006EE9A2 /* LikeButton.swift in Sources */,
+				1D44661123C6566A003C0953 /* RotateNavigationController.swift in Sources */,
 				1D48535923C345630032791E /* NewsTableViewController.swift in Sources */,
+				1D44661623C65CE6003C0953 /* RotatePopAnimator.swift in Sources */,
 				1D666D5423C3CB2F0016E1FA /* NewsTableViewCell3.swift in Sources */,
+				1D44661423C6579B003C0953 /* RotatePushAnimator.swift in Sources */,
 				1D60ADAF23BFBFA3002E66E0 /* FriendCollectionViewCell.swift in Sources */,
 				1DC84ABF23B2B6EF00E7CEAE /* AppDelegate.swift in Sources */,
 				1D44660B23C531E1003C0953 /* IndicatorView.swift in Sources */,

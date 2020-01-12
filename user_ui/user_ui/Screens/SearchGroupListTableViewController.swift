@@ -41,16 +41,7 @@ class SearchGroupListTableViewController: UITableViewController {
     }
 
     func getGroupList() -> [Group] {
-        var groupList:[Group] = []
-        groupList.append(Group(name: "Auto"))
-        groupList.append(Group(name: "Tracks"))
-        groupList.append(Group(name: "bitrix"))
-        groupList.append(Group(name: "IOS Development"))
-        groupList.append(Group(name: "Java"))
-        groupList.append(Group(name: "Spring"))
-        groupList.append(Group(name: "HTML 5"))
-        groupList.append(Group(name: "Angular"))
-        return groupList
+        return GroupsDB.shared.searchGroups
     }
 
 }
