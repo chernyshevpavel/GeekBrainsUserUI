@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class GroupListTableViewController: UITableViewController {
 
@@ -14,7 +15,18 @@ class GroupListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.groupList = getGroupList()
+        if GroupsDB.shared.userGroups.count == 0 {
+            let vkGroupService = VKGroupsService()
+            vkGroupService.get(parameters: [
+                "extended": "1",
+                "user_id": Session.shared.userId
+            ]) { [weak self] groups in
+                print(groups)
+                self?.groupList = groups
+                GroupsDB.shared.userGroups = groups
+                self?.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -25,10 +37,14 @@ class GroupListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let groupSell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewCell") as! GroupTableViewCell
-        let groupName: String =  self.groupList[indexPath.row].name
-        groupSell.name.text = groupName
-        return groupSell
+        let groupCell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewCell") as! GroupTableViewCell
+        let currentGroup = self.groupList[indexPath.row]
+        groupCell.name.text = currentGroup.name
+        guard let url = URL(string: currentGroup.photoPath) else {
+            return groupCell
+        }
+        groupCell.groupPhoto.af.setImage(withURL: url)
+        return groupCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -60,9 +76,4 @@ class GroupListTableViewController: UITableViewController {
             }
         }
     }
-    
-    func getGroupList() -> [Group] {
-        return GroupsDB.shared.userGroups
-    }
-
 }

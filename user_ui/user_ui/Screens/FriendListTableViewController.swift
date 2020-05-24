@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 struct Section<T> {
     var title: String
@@ -22,10 +23,17 @@ class FriendListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        userList = getFriendList()
-        sectionsFriends = Dictionary.init(grouping: userList, by:{$0.name.first})
-        .sorted(by: {String($0.key!) < String($1.key!)})
-        .map {Section(title: String($0.key!), items: $0.value)}
+        let friendsService = VKFriendsService()
+        friendsService.get(parameters: [
+            "order": "name",
+            "fields":"first_name,photo_50"
+        ]) { [weak self] users in
+            self?.userList = users
+            self?.sectionsFriends = Dictionary.init(grouping: self?.userList ?? [], by:{$0.name.first})
+                   .sorted(by: {String($0.key!) < String($1.key!)})
+                   .map {Section(title: String($0.key!), items: $0.value)}
+            self?.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -43,8 +51,10 @@ class FriendListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let friendCell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell") as! FriendTableViewCell
         let friend: User = sectionsFriends[indexPath.section].items[indexPath.row]
-        friendCell.name.text = friend.name
-        friendCell.photo.image.image = UIImage(named: friend.photoPath)
+        let url = URL(string: friend.photoPath)!
+        friendCell.photo.image.af.setImage(withURL: url)
+        friendCell.name.text = "\(friend.name) \(friend.lastName)"
+        
         return friendCell
     }
     

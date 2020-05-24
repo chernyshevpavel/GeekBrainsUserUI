@@ -8,11 +8,12 @@
 
 import Foundation
 
-class Group: Equatable {
+class Group: Equatable, Decodable {
     static func == (lhs: Group, rhs: Group) -> Bool {
         return lhs.name == rhs.name
     }
     
+    var id: Int = 0
     var name: String = ""
     var photoPath: String = ""
     
@@ -20,4 +21,8 @@ class Group: Equatable {
         self.name = name
     }
     
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case photoPath = "photo_50"
+    }
 }
