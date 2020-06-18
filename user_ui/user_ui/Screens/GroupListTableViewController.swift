@@ -43,7 +43,7 @@ class GroupListTableViewController: UITableViewController {
         guard let url = URL(string: currentGroup.photoPath) else {
             return groupCell
         }
-        groupCell.groupPhoto.af.setImage(withURL: url)
+        groupCell.avatarPhoto.image.af.setImage(withURL: url)
         return groupCell
     }
     

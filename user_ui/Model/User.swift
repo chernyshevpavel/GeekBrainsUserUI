@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct User: Decodable {
-    var id: Int = 0
-    var name: String = ""
-    var lastName: String = ""
-    var photoPath: String = ""
+class User: Object, Decodable {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var lastName: String = ""
+    @objc dynamic var photoPath: String = ""
     
-    init(name: String) {
+    required init(name: String) {
         self.name = name
     }
     
@@ -23,7 +24,7 @@ struct User: Decodable {
         self.photoPath = img
     }
     
-    init() {
+    required init() {
         
     }
     

@@ -7,18 +7,20 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Group: Equatable, Decodable {
-    static func == (lhs: Group, rhs: Group) -> Bool {
-        return lhs.name == rhs.name
+class Group: Object, Decodable {
+    
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var photoPath: String = ""
+    
+    required init(name: String) {
+        self.name = name
     }
     
-    var id: Int = 0
-    var name: String = ""
-    var photoPath: String = ""
-    
-    init(name: String) {
-        self.name = name
+    required init() {
+        fatalError("init() has not been implemented")
     }
     
     enum CodingKeys: String, CodingKey {

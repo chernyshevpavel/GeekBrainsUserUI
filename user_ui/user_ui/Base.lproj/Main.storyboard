@@ -206,41 +206,49 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XVb-Vv-co9">
-                                            <rect key="frame" x="34" y="4.6666666666666643" width="70" height="66.666666666666671"/>
-                                            <color key="tintColor" red="0.27058823529999998" green="0.40784313729999999" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlI-qU-Vue">
+                                            <rect key="frame" x="104" y="27" width="210" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="XVb-Vv-co9" secondAttribute="height" multiplier="1:1" id="Isx-tA-ceH"/>
-                                                <constraint firstAttribute="height" constant="50" id="SUT-60-VTj"/>
-                                            </constraints>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="range" keyPath="keyPath">
-                                                    <range key="value" location="0" length="0"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlI-qU-Vue">
-                                            <rect key="frame" x="123" y="27" width="191" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="190" id="W2i-90-uN4"/>
+                                                <constraint firstAttribute="width" constant="180" id="W2i-90-uN4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pf9-Sa-TRd" customClass="AvatarView" customModule="user_ui" customModuleProvider="target">
+                                            <rect key="frame" x="34" y="12.666666666666664" width="50" height="50"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="FRq-4R-wxc"/>
+                                                <constraint firstAttribute="width" secondItem="Pf9-Sa-TRd" secondAttribute="height" multiplier="1:1" id="gBh-So-JX6"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowCollor">
+                                                    <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="wlI-qU-Vue" firstAttribute="leading" secondItem="Pf9-Sa-TRd" secondAttribute="trailing" constant="20" id="BT1-b4-hWo"/>
                                         <constraint firstAttribute="trailing" secondItem="wlI-qU-Vue" secondAttribute="trailing" constant="100" id="Gdc-p2-awV"/>
+                                        <constraint firstItem="Pf9-Sa-TRd" firstAttribute="leading" secondItem="vrZ-cX-4ob" secondAttribute="leading" constant="34" id="Pk4-5Y-sU1"/>
                                         <constraint firstItem="wlI-qU-Vue" firstAttribute="centerY" secondItem="vrZ-cX-4ob" secondAttribute="centerY" id="RNv-ce-MiO"/>
-                                        <constraint firstItem="XVb-Vv-co9" firstAttribute="centerY" secondItem="vrZ-cX-4ob" secondAttribute="centerY" id="aiS-0b-tqt"/>
-                                        <constraint firstItem="wlI-qU-Vue" firstAttribute="leading" secondItem="XVb-Vv-co9" secondAttribute="trailing" constant="20" id="nAr-aW-aEJ"/>
-                                        <constraint firstItem="XVb-Vv-co9" firstAttribute="leading" secondItem="vrZ-cX-4ob" secondAttribute="leading" constant="34" id="yPw-hc-r4k"/>
+                                        <constraint firstItem="Pf9-Sa-TRd" firstAttribute="centerY" secondItem="vrZ-cX-4ob" secondAttribute="centerY" id="dcq-1b-ZuM"/>
+                                        <constraint firstItem="Pf9-Sa-TRd" firstAttribute="width" secondItem="Pf9-Sa-TRd" secondAttribute="height" multiplier="1:1" id="jpc-8F-aef"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="15" leading="14" bottom="8" trailing="8"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="groupPhoto" destination="XVb-Vv-co9" id="dbB-iU-Pbc"/>
+                                    <outlet property="avatarPhoto" destination="Pf9-Sa-TRd" id="nQd-5J-Sc2"/>
                                     <outlet property="name" destination="wlI-qU-Vue" id="3J0-qJ-7cn"/>
                                 </connections>
                             </tableViewCell>
@@ -361,10 +369,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="n6S-rR-WtM">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
@@ -559,7 +567,6 @@
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="15" leading="14" bottom="8" trailing="8"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="groupPhoto" destination="MHu-wl-Knv" id="l9u-95-x8X"/>
                                     <outlet property="name" destination="e5S-yc-esb" id="J7b-sg-g2p"/>
                                     <segue destination="xoW-8s-igl" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="soy-fF-EWd"/>
                                 </connections>

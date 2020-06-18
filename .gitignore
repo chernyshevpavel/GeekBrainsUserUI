@@ -89,3 +89,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 user_ui/user_ui/logic/PrivateInfo.swift
+user_ui/Pods
