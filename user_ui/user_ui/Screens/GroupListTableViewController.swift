@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import RealmSwift
 
 class GroupListTableViewController: UITableViewController {
 
@@ -15,17 +16,27 @@ class GroupListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadData()
         if GroupsDB.shared.userGroups.count == 0 {
             let vkGroupService = VKGroupsService()
             vkGroupService.get(parameters: [
                 "extended": "1",
                 "user_id": Session.shared.userId
-            ]) { [weak self] groups in
-                print(groups)
-                self?.groupList = groups
-                GroupsDB.shared.userGroups = groups
-                self?.tableView.reloadData()
+            ]) { [weak self] in
+                self?.loadData()
             }
+        }
+    }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            let groups = realm.objects(Group.self)
+            self.groupList = Array(groups)
+            GroupsDB.shared.userGroups = Array(groups)
+            self.tableView.reloadData()
+        } catch {
+            print(error)
         }
     }
 

@@ -20,11 +20,15 @@ class Group: Object, Decodable {
     }
     
     required init() {
-        fatalError("init() has not been implemented")
     }
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case name = "name"
         case photoPath = "photo_50"
+    }
+    
+    override class func primaryKey() -> String? {
+        return "id"
     }
 }

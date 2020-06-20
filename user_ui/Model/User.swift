@@ -29,8 +29,13 @@ class User: Object, Decodable {
     }
     
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case name = "first_name"
         case lastName = "last_name"
         case photoPath = "photo_50"
+    }
+    
+    override class func primaryKey() -> String? {
+        return "id"
     }
 }

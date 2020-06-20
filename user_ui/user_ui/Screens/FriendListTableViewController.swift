@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import RealmSwift
 
 struct Section<T> {
     var title: String
@@ -24,17 +25,30 @@ class FriendListTableViewController: UITableViewController {
         super.viewDidLoad()
         searchBar.delegate = self
         let friendsService = VKFriendsService()
+        self.loadData()
         friendsService.get(parameters: [
             "order": "name",
-            "fields":"first_name,photo_50"
-        ]) { [weak self] users in
-            self?.userList = users
-            self?.sectionsFriends = Dictionary.init(grouping: self?.userList ?? [], by:{$0.name.first})
-                   .sorted(by: {String($0.key!) < String($1.key!)})
-                   .map {Section(title: String($0.key!), items: $0.value)}
-            self?.tableView.reloadData()
+            "fields":"id,first_name,photo_50"
+        ]) { [weak self] in
+            self?.loadData()
         }
     }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            
+            let friends = realm.objects(User.self)
+            self.userList = Array(friends)
+            self.sectionsFriends = Dictionary.init(grouping: self.userList ?? [], by:{$0.name.first})
+                .sorted(by: {String($0.key!) < String($1.key!)})
+                .map {Section(title: String($0.key!), items: $0.value)}
+            self.tableView.reloadData()
+        } catch {
+            print(error)
+        }
+    }
+
 
     // MARK: - Table view data source
 
