@@ -19,7 +19,7 @@ class VKGroupsService {
         let items: [Group]
     }
     
-    func get(parameters: Dictionary<String, String>, complition: @escaping () -> Void) {
+    func get(parameters: Dictionary<String, String>) {
         let imolodedParams = Session.shared.implodeWithDefaultVKParams(params: parameters)
         AF.request("https://api.vk.com/method/groups.get", parameters: imolodedParams).responseJSON { response in
             guard let data = response.data else {return}
@@ -27,7 +27,6 @@ class VKGroupsService {
                 let vkGroupsResp = try JSONDecoder().decode(VKGroupsResponse.self, from: data)
                 print(vkGroupsResp.response.items)
                 self.saveGroups(groups: vkGroupsResp.response.items)
-                complition()
             } catch {
                 print(error)
             }

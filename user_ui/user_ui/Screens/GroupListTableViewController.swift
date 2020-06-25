@@ -12,44 +12,54 @@ import RealmSwift
 
 class GroupListTableViewController: UITableViewController {
 
-    var groupList:[Group] = []
+    var groupList: Results<Group>?
+    var token: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadData()
-        if GroupsDB.shared.userGroups.count == 0 {
-            let vkGroupService = VKGroupsService()
-            vkGroupService.get(parameters: [
-                "extended": "1",
-                "user_id": Session.shared.userId
-            ]) { [weak self] in
-                self?.loadData()
-            }
-        }
+        pairTableAndRealm()
+        let vkGroupService = VKGroupsService()
+        vkGroupService.get(parameters: [
+            "extended": "1",
+            "user_id": Session.shared.userId
+        ])
     }
     
-    func loadData() {
-        do {
-            let realm = try Realm()
-            let groups = realm.objects(Group.self)
-            self.groupList = Array(groups)
-            GroupsDB.shared.userGroups = Array(groups)
-            self.tableView.reloadData()
-        } catch {
-            print(error)
+
+    func pairTableAndRealm() {
+            guard let realm = try? Realm() else { return }
+            groupList = realm.objects(Group.self)
+            token = groupList?.observe { [weak self] (changes: RealmCollectionChange) in
+                guard let tableView = self?.tableView else { return }
+                switch changes {
+                case .initial:
+                    tableView.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    tableView.beginUpdates()
+                    tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                    tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}),
+                                         with: .automatic)
+                    tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                         with: .automatic)
+                    tableView.endUpdates()
+                case .error(let error):
+                    fatalError("\(error)")
+                }
+            }
         }
-    }
+
 
     // MARK: - Table view data source
 
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groupList.count
+        return groupList?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let groupCell = tableView.dequeueReusableCell(withIdentifier: "GroupTableViewCell") as! GroupTableViewCell
-        let currentGroup = self.groupList[indexPath.row]
+        let currentGroup = self.groupList![indexPath.row]
         groupCell.name.text = currentGroup.name
         guard let url = URL(string: currentGroup.photoPath) else {
             return groupCell
@@ -64,11 +74,15 @@ class GroupListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let removingGroup = groupList[indexPath.row]
-            groupList.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            GroupsDB.shared.userGroups.remove(at: indexPath.row)
-            GroupsDB.shared.searchGroups.append(removingGroup)
+            let removingGroup = groupList![indexPath.row]
+            do {
+                let realm = try Realm()
+                realm.beginWrite()
+                realm.delete(removingGroup)
+                try realm.commitWrite()
+            } catch {
+                print(error)
+            }
         }
     }
     
@@ -78,11 +92,13 @@ class GroupListTableViewController: UITableViewController {
                 else {return}
             if let indexPath = serchGroupTableVC.tableView.indexPathForSelectedRow {
                 let group = serchGroupTableVC.groupList[indexPath.row]
-                GroupsDB.shared.searchGroups.remove(at: indexPath.row)
-                if !groupList.contains(group) {
-                    self.groupList.append(group)
-                  //  serchGroupTableVC.groupList.remove(at: indexPath.row)
-                    tableView.reloadData()
+                do {
+                    var realm = try Realm()
+                    realm.beginWrite()
+                    realm.add(group, update: .modified)
+                    try realm.commitWrite()
+                } catch {
+                    print(error)
                 }
             }
         }

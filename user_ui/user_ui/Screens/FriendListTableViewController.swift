@@ -18,12 +18,14 @@ struct Section<T> {
 class FriendListTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
-    var userList: [User] = []
+    var userList: Results<User>?
+    var token: NotificationToken?
     var sectionsFriends: [Section<User>] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        pairTableAndRealm()
         let friendsService = VKFriendsService()
         self.loadData()
         friendsService.get(parameters: [
@@ -35,19 +37,52 @@ class FriendListTableViewController: UITableViewController {
     }
     
     func loadData() {
-        do {
-            let realm = try Realm()
-            
-            let friends = realm.objects(User.self)
-            self.userList = Array(friends)
-            self.sectionsFriends = Dictionary.init(grouping: self.userList ?? [], by:{$0.name.first})
-                .sorted(by: {String($0.key!) < String($1.key!)})
-                .map {Section(title: String($0.key!), items: $0.value)}
-            self.tableView.reloadData()
-        } catch {
-            print(error)
-        }
+//        do {
+//            let realm = try Realm()
+//
+//            let friends = realm.objects(User.self)
+//            self.userList = Array(friends)
+//            self.sectionsFriends = Dictionary.init(grouping: self.userList ?? [], by:{$0.name.first})
+//                .sorted(by: {String($0.key!) < String($1.key!)})
+//                .map {Section(title: String($0.key!), items: $0.value)}
+//            self.tableView.reloadData()
+//        } catch {
+//            print(error)
+//        }
     }
+    
+    func pairTableAndRealm() {
+            guard let realm = try? Realm() else { return }
+            userList = realm.objects(User.self)
+
+            token = userList?.observe { [weak self] (changes: RealmCollectionChange) in
+                guard let tableView = self?.tableView else { return }
+                switch changes {
+                case .initial(let results):
+                    var users: [User] = []
+                    for user in results {
+                        users.append(user)
+                    }
+                    
+                    self?.sectionsFriends = Dictionary.init(grouping: users ?? [], by:{$0.name.first})
+                        .sorted(by: {String($0.key!) < String($1.key!)})
+                        .map {Section(title: String($0.key!), items: $0.value)}
+                    tableView.reloadData()
+                case .update(let results, let deletions, let insertions, let modifications):
+                    var users: [User] = []
+                    for user in results {
+                        users.append(user)
+                    }
+                    self?.sectionsFriends = Dictionary.init(grouping: users ?? [], by:{$0.name.first})
+                        .sorted(by: {String($0.key!) < String($1.key!)})
+                        .map {Section(title: String($0.key!), items: $0.value)}
+                    tableView.reloadData()
+                case .error(let error):
+                    fatalError("\(error)")
+                }
+            }
+        }
+
 
 
     // MARK: - Table view data source
@@ -100,7 +135,7 @@ class FriendListTableViewController: UITableViewController {
 extension FriendListTableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        sectionsFriends = Dictionary.init(grouping: userList.filter {(user) -> Bool in
+        sectionsFriends = Dictionary.init(grouping: userList!.filter {(user) -> Bool in
             return searchText.isEmpty ? true : user.name.lowercased().contains(searchText.lowercased())
         }, by: {$0.name.first})
         .sorted(by: {String($0.key!) < String($1.key!)})
